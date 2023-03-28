@@ -7,17 +7,18 @@ import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
+    CourseModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'nestjs',
-      entities: [CourseEntity],
+      database: 'course_db',
+      // entities: [CourseEntity],
+      entities: ['src/**/**.entity{.ts,.js}'],
       synchronize: true,
     }),
-    CourseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
